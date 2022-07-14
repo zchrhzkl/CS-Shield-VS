@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyWizards>
+  <policyWizard>
+    <name>ghost</name>
+    <wizard_uuid>f10bc363-deb5-7218-b4ae-e08c85f84aa089ba9aa631170429</wizard_uuid>
+    <title>GHOST (glibc) Detection</title>
+    <desc>Local checks for CVE-2015-0235.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>shellshock</name>
+    <wizard_uuid>65d5b7ce-8d3b-d0df-f473-40633bb6122108a510a44374a167</wizard_uuid>
+    <title>Bash Shellshock Detection</title>
+    <desc>Remote and local checks for CVE-2014-6271 and CVE-2014-7169.</desc>
+  </policyWizard>
+  <policyWizard no_advanced="true" cloud_only="true" more_info="http://www.tenable.com/products/nessus/nessus-enterprise-cloud">
+    <name>asv</name>
+    <wizard_uuid>cfc46c2d-30e7-bb2b-3b92-c75da136792d080c1fffcc429cfd</wizard_uuid>
+    <title>PCI Quarterly External Scan</title>
+    <desc>An approved policy for quarterly external scanning required by PCI.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>discovery</name>
+    <wizard_uuid>bbd4f805-3966-d464-b2d1-0079eb89d69708c3a05ec2812bcf</wizard_uuid>
+    <title>Host Discovery</title>
+    <desc>A simple policy to discover live hosts and open ports.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>basic</name>
+    <wizard_uuid>731a8e52-3ea6-a291-ec0a-d2ff0619c19d7bd788d6be818b65</wizard_uuid>
+    <title>Basic Network Scan</title>
+    <desc>A full system scan suitable for any host.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>patch_audit</name>
+    <wizard_uuid>0625147c-30fe-d79f-e54f-ce7ccd7523e9b63d84cb81c23c2f</wizard_uuid>
+    <title>Credentialed Patch Audit</title>
+    <desc>Authenticates to hosts and enumerates missing updates.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>malware</name>
+    <wizard_uuid>d16c51fa-597f-67a8-9add-74d5ab066b49a918400c42a035f7</wizard_uuid>
+    <title>Windows Malware Scan</title>
+    <desc>A policy to scan for malware on Windows systems.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>webapp</name>
+    <wizard_uuid>c3cbcd46-329f-a9ed-1077-554f8c2af33d0d44f09d736969bf</wizard_uuid>
+    <title>Web Application Tests</title>
+    <desc>A policy to scan for published and unknown web vulnerabilities.</desc>
+  </policyWizard>
+  <policyWizard subscription_only="true" more_info="http://www.tenable.com/products/nessus">
+    <name>mobile</name>
+    <wizard_uuid>8382be4c-2056-51fe-65a3-a376b7912a013d58cfc392e0fac5</wizard_uuid>
+    <title>Mobile Device Scan</title>
+    <desc>Assess mobile devices via Exchange or a Mobile Device Manager.</desc>
+  </policyWizard>
+  <policyWizard subscription_only="true" more_info="http://www.tenable.com/products/nessus">
+    <name>offline_audit</name>
+    <wizard_uuid>1384f3ce-0376-7801-22db-a91e1ae16dea8d863e17313802b1</wizard_uuid>
+    <title>Offline Config Auditing</title>
+    <desc>Upload and audit the config file of a network device.</desc>
+  </policyWizard>
+  <policyWizard minVersion="5200" subscription_only="true" more_info="http://www.tenable.com/products/nessus">
+    <name>aws</name>
+      <wizard_uuid>97f94b3b-f843-92d1-5e7a-df02f9dbfaaef40ae03bfdfa7239</wizard_uuid>
+      <title>Amazon AWS Audit</title>
+      <desc>A policy to audit Amazon AWS infrastructure.</desc>
+  </policyWizard>
+  <policyWizard no_msp="true">
+    <name>pci</name>
+    <wizard_uuid>e460ea7c-7916-d001-51dc-e43ef3168e6e20f1d97bdebf4a49</wizard_uuid>
+    <title>Perform Network Vulnerability Scans for PCI</title>
+    <desc>A policy for internal or external PCI DSS vulnerability scans.</desc>
+  </policyWizard>
+  <policyWizard>
+    <name>advanced</name>
+    <wizard_uuid>0</wizard_uuid>
+    <title>Advanced Policy</title>
+    <desc>Create a policy without using any templates or recommendations.</desc>
+  </policyWizard>
+</policyWizards>

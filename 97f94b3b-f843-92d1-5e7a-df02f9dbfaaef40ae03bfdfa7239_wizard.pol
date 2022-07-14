@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>aws</name>
+  <wizard_uuid>97f94b3b-f843-92d1-5e7a-df02f9dbfaaef40ae03bfdfa7239</wizard_uuid>
+  <wizard>
+
+    <step number="0">
+      <desc>Define your policy name, description, visibility, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>no_target</name>
+            <value>true</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Policy Compliance</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.72426</name> <!-- Amazon AWS Compliance Checks -->
+            <value>enabled</value>
+          </preference>
+
+ 	  <preference>
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:SSL :</name>
+            <value>yes</value>
+	  </preference>
+ 	  <preference>
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Verify SSL Certificate :</name>
+            <value>yes</value>
+	  </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+
+    <step number="1">
+      <desc>Provide Amazon AWS Access Key, Secret Key and an audit file</desc>
+      <input label="AWS Access Key ID" required="true">
+        <type>password</type>
+        <preference>
+          <category>plugin</category>
+          <name>Amazon Web Services Settings[password]:AWS Access Key ID :</name>
+        </preference>
+      </input>
+      <input label="AWS Secret Key" required="true">
+        <type>password</type>
+        <preference>
+          <category>plugin</category>
+          <name>Amazon Web Services Settings[password]:AWS Secret Access Key :</name>
+        </preference>
+      </input>
+      <input label="Amazon AWS .audit File" required = "true">
+        <type>file</type>
+        <preference>
+          <category>plugin</category>
+          <name>Amazon AWS Compliance Checks[file]:Policy file #1 :</name>
+        </preference>
+      </input>
+    </step>
+
+    <step number="2">
+      <desc>Select which region(s) to connect to.
+
+Please note credentials used to access the Beijing (China) region cannot be used to access other regions, and vice versa.</desc>
+      <input label="Regions" multiple_allowed="false" default="Rest of the World">
+        <type>ui_radio</type>
+        <preference>
+          <category>plugin</category>
+          <name>ui.aws.region_category</name>
+        </preference>
+        <defaultPreferences>
+          <preference regex="^Rest of the World$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region cn-north-1 :</name>
+            <value>no</value>
+          </preference>
+
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region cn-north-1 :</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region us-east-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region us-west-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region us-west-2 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region eu-west-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region ap-northeast-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region ap-southeast-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region ap-southeast-2 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region sa-east-1 :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^China$">
+            <category>plugin</category>
+            <name>Amazon Web Services Settings[checkbox]:Region us-gov-west-1 :</name>
+            <value>no</value>
+          </preference>
+        </defaultPreferences>
+        <option name="Rest of the World">
+          <desc>If no regions are selected, us-east-1 is used by default.</desc>
+          <input label="us-east-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region us-east-1 :</name>
+            </preference>
+          </input>
+          <input label="us-west-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region us-west-1 :</name>
+            </preference>
+          </input>
+          <input label="us-west-2" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region us-west-2 :</name>
+            </preference>
+          </input>
+          <input label="eu-west-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region eu-west-1 :</name>
+            </preference>
+          </input>
+          <input label="ap-northeast-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region ap-northeast-1 :</name>
+            </preference>
+          </input>
+          <input label="ap-southeast-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region ap-southeast-1 :</name>
+            </preference>
+          </input>
+          <input label="ap-southeast-2" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region ap-southeast-2 :</name>
+            </preference>
+          </input>
+          <input label="sa-east-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region sa-east-1 :</name>
+            </preference>
+          </input>
+          <input label="us-gov-west-1" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Amazon Web Services Settings[checkbox]:Region us-gov-west-1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="China">
+          <desc>Nessus will attempt to access the Beijing (China) Region (cn-north-1).</desc>
+        </option>
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>

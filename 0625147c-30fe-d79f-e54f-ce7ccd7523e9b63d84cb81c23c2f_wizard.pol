@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>patch_audit</name>
+  <wizard_uuid>0625147c-30fe-d79f-e54f-ce7ccd7523e9b63d84cb81c23c2f</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.General</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.66334</name> <!-- Patch Report -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Settings</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.21745</name> <!-- hostlevel_check_failed.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.11219</name> <!-- Nessus SYN scanner -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.14274</name> <!-- Nessus SNMP Scanner -->
+            <value>enabled</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+    <step number="1">
+      <desc>Choose the operating system(s) to scan:</desc>
+      <input label="Authentication method" required="true" multiple_allowed="true" default="Windows">
+        <type>ui_radio</type>
+        <option name="Windows">
+          <desc>Nessus can enumerate Windows settings, detect insecure configurations, and identify missing Microsoft or third-party updates.  Please provide the credentials for a user account that has local administrative privileges on the targets being scanned.</desc>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:SMB account :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.34220</name> <!-- Netstat Portscanner (WMI) -->
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Windows</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Windows : Microsoft Bulletins</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Windows : User management</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>plugin</category>
+                <name>Login configurations[checkbox]:Never send SMB credentials in clear text</name>
+                <value>yes</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[password]:SMB password :</name>
+            </preference>
+          </input>
+          <input label="Domain">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:SMB domain (optional) :</name>
+            </preference>
+          </input>
+          <input label="Start the Remote Registry service during the scan" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Start the registry service during the scan</name>
+            </preference>
+          </input>
+          <input label="Enable administrative shares during the scan" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Enable administrative shares during the scan</name>
+            </preference>
+          </input>
+        </option>
+        <option name="SSH">
+          <desc>Nessus can use SSH to enumerate settings, configurations, and missing patches for many operating systems (including Cisco IOS, Mac OS X, Unix, and other Unix-like systems).  Please provide the credentials for a user with root (or equivalent) privileges on the targets being scanned.</desc>
+          <input label="Username" required="true">
+            <placeholder>root</placeholder>
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[entry]:SSH user name :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.14272</name> <!-- netstat portscanner (SSH) -->
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.12634</name> <!-- ssh_get_info.nasl -->
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.AIX Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Amazon Linux Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.CentOS Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.CISCO</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Debian Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.F5 Networks Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Fedora Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.FreeBSD Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Gentoo Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.HP-UX Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Junos Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.MacOS X Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Mandriva Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Oracle Linux Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.OracleVM Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Palo Alto Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Red Hat Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Scientific Linux Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Slackware Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Solaris Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.SuSE Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Ubuntu Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.VMware ESX Local Security Checks</name>
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>plugin</category>
+                <name>Login configurations[checkbox]:Never send SMB credentials in clear text</name>
+                <value>yes</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Password (unsafe!)">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[password]:SSH password (unsafe!) :</name>
+            </preference>
+          </input>
+          <input label="Public key">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[file]:SSH public key to use :</name>
+            </preference>
+          </input>
+          <input label="Private key">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[file]:SSH private key to use :</name>
+            </preference>
+          </input>
+          <input label="Passphrase for private key">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[password]:Passphrase for SSH key :</name>
+            </preference>
+          </input>
+          <input label="Elevate privileges with" default="Nothing">
+            <type>radio</type>
+            <option>Cisco 'enable'</option>
+            <option>dzdo</option>
+            <option>Nothing</option>
+            <option>pbrun</option>
+            <option>su</option>
+            <option>su+sudo</option>
+            <option>sudo</option>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[radio]:Elevate privileges with :</name>
+            </preference>
+          </input>
+          <input label="Elevation account">
+            <type>entry</type>
+            <placeholder>root</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[entry]:Escalation account :</name>
+            </preference>
+          </input>
+          <input label="Elevation password">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[password]:Escalation password :</name>
+            </preference>
+          </input>
+          <input label="Known hosts file">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[file]:SSH known_hosts file :</name>
+            </preference>
+          </input>
+        </option>
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>

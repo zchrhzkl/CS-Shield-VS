@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>discovery</name>
+  <wizard_uuid>bbd4f805-3966-d464-b2d1-0079eb89d69708c3a05ec2812bcf</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>no_target</name>
+            <value>false</value>
+          </preference>
+          <preference>
+            <category>server</category>
+            <name>max_hosts</name>
+            <value>256</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Ping the remote host[checkbox]:Log live hosts in the report</name>
+		<value>yes</value>
+	  </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Ping the remote host[checkbox]:Fast network discovery</name>
+		<value>yes</value>
+	  </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Ping the remote host[checkbox]:Fast network discovery</name>
+		<value>yes</value>
+	  </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Ping the remote host[checkbox]:Test the local Nessus host</name>
+		<value>yes</value>
+	  </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Do not scan fragile devices[checkbox]:Scan Network Printers</name>
+		<value>yes</value>
+	  </preference>
+ 	  <preference>
+		<category>plugin</category>
+		<name>Do not scan fragile devices[checkbox]:Scan Novell Netware hosts</name>
+		<value>yes</value>
+	  </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+    <step number="1">
+     <desc>Define the type of network discovery you want to perform:</desc>
+      <input label="Discovery type">
+	<type>radio</type>
+	<option>Host enumeration</option>
+	<option>Port scan (common ports)</option>
+	<option>Port scan (all ports)</option>
+	<preference>
+           <category>ui_placeholder</category>
+           <name>wizard.discovery.discovery type</name>
+        </preference>
+	<defaultPreferences regex="Port scan">
+	<preference regex="Port scan">
+           <category>plugin</category>
+           <name>plugin_selection.individual_plugin.11219</name>
+           <value>enabled</value>
+        </preference>
+	<preference regex="Port scan \(all ports\)">
+           <category>server</category>
+           <name>port_range</name>
+           <value>1-65535</value>
+        </preference>
+	<preference regex="Port scan \(common ports\)">
+           <category>server</category>
+           <name>port_range</name>
+           <value>default</value>
+        </preference>
+	</defaultPreferences>
+     </input>
+      <input label="Display unreachable hosts in the scan results" required="true" default="no">
+        <type>checkbox</type>
+        <preference>
+          <category>plugin</category>
+          <name>Ping the remote host[checkbox]:Make the dead hosts appear in the report</name>
+        </preference>
+      </input>
+     </step>
+  </wizard>
+</policyTemplate>

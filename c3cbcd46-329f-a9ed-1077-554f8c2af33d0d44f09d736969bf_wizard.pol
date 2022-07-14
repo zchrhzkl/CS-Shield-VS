@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>webapp</name>
+  <wizard_uuid>c3cbcd46-329f-a9ed-1077-554f8c2af33d0d44f09d736969bf</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.CGI abuses</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.CGI abuses : XSS</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Web Servers</name>
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name></name>
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.11219</name> <!-- Nessus SYN scanner -->
+            <value>enabled</value>
+          </preference>
+
+ 	  <preference>
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable CGI scanning</name>
+            <value>yes</value>
+	  </preference>
+ 	  <preference>
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Enable web applications tests</name>
+            <value>yes</value>
+	  </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+
+    <step number="1">
+      <desc>Basic web application scanning options:</desc>
+      <input label="Scan type" required="true">
+        <type>radio</type>
+        <option>Less complex (shorter scan time)</option>
+        <option>More in depth (longer scan time)</option>
+        <preference>
+          <category>ui_placeholder</category>
+          <name>wizard.webapp.scan type</name>
+        </preference>
+	<defaultPreferences>
+          <preference regex="Less">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[entry]:Maximum run time (min) :</name>
+            <value>5</value>
+          </preference>
+          <preference regex="Less">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Combinations of arguments values</name>
+            <value>one value</value>
+          </preference>
+          <preference regex="Less">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Stop at first flaw</name>
+            <value>per CGI</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Thorough tests (slow)</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[entry]:Maximum run time (min) :</name>
+            <value>10</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Try all HTTP methods</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:HTTP Parameter Pollution</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Combinations of arguments values</name>
+            <value>all pairs (slower but efficient)</value>
+          </preference>
+          <preference regex="More">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Stop at first flaw</name>
+            <value>per parameter</value>
+          </preference>
+	</defaultPreferences>
+      </input>
+      <input label="Web mirroring start page(s)" required="true">
+        <type>entry</type>
+        <regex>START_PAGE_REGEX</regex>
+        <placeholder>/blog:/store/catalog</placeholder>
+        <preference>
+          <category>plugin</category>
+          <name>Web mirroring[entry]:Start page :</name>
+        </preference>
+      </input>
+     </step>
+
+    <step number="2">
+      <desc>Authenticated web application scan settings (optional, select at most one):</desc>
+      <input label="Authentication method" multiple_allowed="false" required="false" default="HTTP login form">
+        <type>ui_radio</type>
+        <preference>
+          <category>server</category>
+          <name>webapp.auth_type</name>
+        </preference>
+        <defaultPreferences>
+          <preference regex="^HTTP"> <!-- either "HTTP login form" or "HTTP cookies import" -->
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Automated login page search</name>
+            <value>no</value>
+          </preference>
+
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>Login configurations[entry]:HTTP account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>Login configurations[password]:HTTP password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login page :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login form :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login form fields :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Check authentication on page :</name>
+            <value></value>
+          </preference>
+          <preference regex="^HTTP cookies import">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Authenticated regex :</name>
+            <value></value>
+          </preference>
+          <preference regex="(Automatic|HTTP cookies import)">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Abort web application tests if login fails</name>
+            <value>yes</value>
+          </preference>
+        </defaultPreferences>
+        <option name="Automatic authentication">
+          <desc>When Nessus is provided with a username and password, it will attempt to authenticate the first time it discovers a web page with a login form.</desc>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <placeholder>admin</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:HTTP account :</name>
+            </preference>
+          </input>
+          <input label="Password (sent in the clear if any target web servers do not use HTTPS)" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[password]:HTTP password (sent in clear) :</name>
+            </preference>
+          </input>
+        </option>
+        <option name="HTTP login form">
+          <desc>Nessus is capable of logging into web applications that used form based authentication.  This allows authentication restricted pages to be tested during the scan.</desc>
+          <input label="Username">
+            <type>entry</type>
+            <placeholder>admin</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:HTTP account :</name>
+            </preference>
+          </input>
+          <input label="Password (sent in the clear if any target web servers do not use HTTPS)">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[password]:HTTP password (sent in clear) :</name>
+            </preference>
+          </input>
+          <input label="Login page" required="true">
+            <type>entry</type>
+            <placeholder>/login.php</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP login page[entry]:Login page :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>HTTP login page[radio]:Login form method :</name>
+                <value>POST</value>
+              </preference>
+              <preference>
+                <category>plugin</category>
+                <name>HTTP login page[checkbox]:Abort web application tests if login fails</name>
+                <value>yes</value>
+              </preference>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Settings</name>
+                <value>mixed</value>
+              </preference>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.11149</name> <!-- HTTP login page -->
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.42893</name> <!-- HTTP cookies import -->
+                <value>disabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Login submission page" required="true">
+            <type>entry</type>
+            <placeholder>/process_login.php</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP login page[entry]:Login form :</name>
+            </preference>
+          </input>
+          <input label="Login parameters" required="true">
+            <type>entry</type>
+            <placeholder>user=%USER%&amp;pass=%PASS%</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP login page[entry]:Login form fields :</name>
+            </preference>
+          </input>
+          <input label="Check authentication on page" required="true">
+            <type>entry</type>
+            <placeholder>/user/profile.php</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP login page[entry]:Check authentication on page :</name>
+            </preference>
+          </input>
+          <input label="Regex to verify successful authentication" required="true">
+            <type>entry</type>
+            <placeholder>Logged in as user "[^"]+"</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP login page[entry]:Authenticated regex :</name>
+            </preference>
+          </input>
+        </option>
+        <option name="HTTP cookies import">
+          <desc>Nessus can access web applications that use authentication cookies by importing cookie data.  This requires authenticating to the web application via a web browser (or other user agent) and exporting the cookie data to a file that uses the Netscape cookies.txt format.  This can be a useful alternative when performing an HTTP login via Nessus is not a viable option.</desc>
+          <input label="Cookies file" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>HTTP cookies import[file]:Cookies file :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>family</category>
+                <name>plugin_selection.family.Settings</name>
+                <value>mixed</value>
+              </preference>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.42893</name> <!-- HTTP cookies import -->
+                <value>enabled</value>
+              </preference>
+              <preference>
+                <category>individual_plugin</category>
+                <name>plugin_selection.individual_plugin.11149</name> <!-- HTTP login page -->
+                <value>disabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+        </option>
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>

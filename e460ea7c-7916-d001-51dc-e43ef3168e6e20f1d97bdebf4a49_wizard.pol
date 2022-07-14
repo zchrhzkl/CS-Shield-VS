@@ -1,0 +1,1497 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>pci</name>
+  <wizard_uuid>e460ea7c-7916-d001-51dc-e43ef3168e6e20f1d97bdebf4a49</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <!-- Plugins (enable all except Port Scanners by default) -->
+          <preference>
+            <category>wizard</category>
+            <name>enable_all_families</name>
+            <value>true</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.34220</name> <!-- Netstat Portscanner (WMI) -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.14274</name> <!-- Nessus SNMP Scanner -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.14272</name> <!-- netstat portscanner (SSH) -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.11219</name> <!-- Nessus SYN scanner -->
+            <value>enabled</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+     </step>
+
+    <step number="1">
+      <desc>This wizard helps you to create valid scan policies that may be used to satisfy either internal (PCI DSS 11.2.1) or external (PCI DSS 11.2.2) scanning requirements for ongoing vulnerability management programs that satisfy PCI compliance requirements. You may use these scan policies for ongoing vulnerability management and to perform rescans until you get passing or clean results.
+
+Note: while the PCI DSS requires you to provide  evidence of passing or &quot;clean&quot; scans on at least a quarterly basis (internally and externally) you are also required to perform scans after any significant changes to you network (PCI DSS 11.2.3).</desc>
+      <input label="Scan Type" multiple_allowed="false" default="Internal">
+        <type>ui_radio</type>
+        <preference>
+          <category>server</category>
+          <name>ui.pci.scan_type</name>
+        </preference>
+        <defaultPreferences>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>max_simult_tcp_sessions</name>
+            <value>unlimited</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>use_mac_addr</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>xmlrpc_debug_scheduler</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>throttle_scan</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>listen_address</name>
+            <value>0.0.0.0</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>slice_network_addresses</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>non_simult_ports</name>
+            <value>139, 445</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>stop_scan_on_disconnect</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>report_crashes</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>host.max_simult_tcp_sessions</name>
+            <value>unlimited</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>reverse_lookup</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>optimize_test</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>log_whole_attack</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>ssl_cipher_list</name>
+            <value>strong</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>cgi_path</name>
+            <value>/cgi-bin:/scripts</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>unscanned_closed</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>save_knowledge_base</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>use_kernel_congestion_detection</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>xmlrpc_no_referrer_check</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>listen_port</name>
+            <value>1241</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>auto_update</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>plugins_timeout</name>
+            <value>320</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>auto_enable_dependencies</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>safe_checks</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>checkout</name>
+            <value>/tmp/test2</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>stop_scan_on_hang</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>allow_post_scan_editing</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>checkin</name>
+            <value>/tmp/test</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>smb_c_share</name>
+            <value>CDRV$</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>multi_scan_same_host</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>xmlrpc_import_feed_policies</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>reduce_connections_on_congestion</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>silent_dependencies</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>port_range</name>
+            <value>1-65535</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>compress_files_on_disk</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>max_sessions_per_user</name>
+            <value>10</value>
+          </preference>
+          <preference regex="^External$">
+            <category>server</category>
+            <name>plugin_upload</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Antivirus Software Check[entry]:Delay (in days, between 0 and 7) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Use Host SID to Enumerate Local Users[entry]:Start UID :</name>
+            <value>1000</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Use Host SID to Enumerate Local Users[entry]:End UID :</name>
+            <value>1200</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Kerberos configuration[entry]:Kerberos Key Distribution Center (KDC) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Kerberos configuration[entry]:Kerberos KDC Port :</name>
+            <value>88</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Kerberos configuration[radio]:Kerberos KDC Transport :</name>
+            <value>udp;tcp</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Kerberos configuration[entry]:Kerberos Realm (SSH only) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>LDAP &apos;Domain Admins&apos; Group Membership Enumeration[entry]:LDAP user :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>LDAP &apos;Domain Admins&apos; Group Membership Enumeration[password]:LDAP password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>LDAP &apos;Domain Admins&apos; Group Membership Enumeration[entry]:Max results :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Scope[checkbox]:Request information about the domain</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Do not scan fragile devices[checkbox]:Scan Network Printers</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Do not scan fragile devices[checkbox]:Scan Novell Netware hosts</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Use Domain SID to Enumerate Users[entry]:Start UID :</name>
+            <value>1000</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Use Domain SID to Enumerate Users[entry]:End UID :</name>
+            <value>1200</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:Community name :</name>
+            <value>public</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:Community name (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:Community name (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:Community name (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:UDP port :</name>
+            <value>161</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[entry]:SNMPv3 user name :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[password]:SNMPv3 authentication password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[radio]:SNMPv3 authentication algorithm :</name>
+            <value>MD5;SHA1</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[password]:SNMPv3 privacy password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SNMP settings[radio]:SNMPv3 privacy algorithm :</name>
+            <value>DES</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HP ProCurve Compliance Checks[radio]:HP ProCurve File To Audit :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Cleartext protocols settings[entry]:User name :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Cleartext protocols settings[password]:Password (unsafe!) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Cleartext protocols settings[checkbox]:Try to perform patch level checks over telnet</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Cleartext protocols settings[checkbox]:Try to perform patch level checks over rsh</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Cleartext protocols settings[checkbox]:Try to perform patch level checks over rexec</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>IBM iSeries Credentials[entry]:Login :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>IBM iSeries Credentials[password]:Password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Start the registry service during the scan</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Enable administrative shares during the scan</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[entry]:Login :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[password]:Password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[radio]:DB Type :</name>
+            <value>Oracle</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[entry]:Database SID :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[entry]:Database port to use :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[radio]:Oracle auth type:</name>
+            <value>NORMAL</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Database settings[radio]:SQL Server auth type:</name>
+            <value>Windows</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[entry]:TCP ping destination port(s) :</name>
+            <value>built-in</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Do an ARP ping</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Do a TCP ping</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Do an ICMP ping</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[entry]:Number of retries (ICMP) :</name>
+            <value>2</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Do an applicative UDP ping (DNS,RPC...)</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Make the dead hosts appear in the report</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Log live hosts in the report</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Test the local Nessus host</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Fast network discovery</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Interpret ICMP unreach from gateway</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:HTTP account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:HTTP password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:NNTP account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:NNTP password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:FTP account :</name>
+            <value>anonymous</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:FTP password (sent in clear) :</name>
+            <value>nessus@nessus.org</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:FTP writeable directory :</name>
+            <value>/incoming</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:POP2 account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:POP2 password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:POP3 account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:POP3 password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:IMAP account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:IMAP password (sent in clear) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:SMB account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:SMB password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:SMB domain (optional) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[radio]:SMB password type :</name>
+            <value>Password</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB account (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:Additional SMB password (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB domain (optional) (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB account (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:Additional SMB password (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB domain (optional) (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB account (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:Additional SMB password (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:Additional SMB domain (optional) (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[checkbox]:Never send SMB credentials in clear text</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[checkbox]:Only use NTLMv2</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[checkbox]:Only use Kerberos authentication for SMB</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Nessus SYN scanner[radio]:Firewall detection :</name>
+            <value>Automatic (normal)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login page :</name>
+            <value>/</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login form :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Login form fields :</name>
+            <value>user=%USER%&amp;pass=%PASS%</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[radio]:Login form method :</name>
+            <value>POST;GET</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Automated login page search</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Re-authenticate delay (seconds) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Check authentication on page :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Follow 30x redirections (# of levels) :</name>
+            <value>2</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[entry]:Authenticated regex :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Invert test (disconnected if regex matches)</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Match regex on HTTP headers</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Case insensitive regex</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>HTTP login page[checkbox]:Abort web application tests if login fails</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Controller :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Username :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[password]:Domain Password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Controller 2:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain 2:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Username 2:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[password]:Domain Password 2:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Controller 3:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain 3:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Username 3:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[password]:Domain Password 3:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Controller 4:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain 4:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Username 4:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[password]:Domain Password 4:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Controller 5:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain 5:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[entry]:Domain Username 5:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ADSI Settings[password]:Domain Password 5:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Service Detection[radio]:Test SSL based services</name>
+            <value>All</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Oracle Settings[entry]:Oracle SID :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Oracle Settings[checkbox]:Test default accounts (slow)</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Enable web applications tests</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[entry]:Maximum run time (min) :</name>
+            <value>5</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Try all HTTP methods</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Combinations of arguments values</name>
+            <value>one value</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:HTTP Parameter Pollution</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[radio]:Stop at first flaw</name>
+            <value>per parameter (slow)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Test embedded web servers</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[entry]:URL for Remote File Inclusion :</name>
+            <value>http://rfi.nessus.org/rfi.txt</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Probe services on every port</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Do not log in with user accounts not specified in the policy</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable CGI scanning</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Network type</name>
+            <value>Mixed (use RFC 1918)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable experimental scripts</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Thorough tests (slow)</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Report verbosity</name>
+            <value>Normal</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Report paranoia</name>
+            <value>Paranoid (more false alarms)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[entry]:HTTP User-Agent</name>
+            <value>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[password]:SSL password for SSL key :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enumerate all SSL ciphers</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable CRL checking (connects to Internet)</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[entry]:GMC Server :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[entry]:Port :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[entry]:Domain :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[entry]:Username :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[password]:Password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[checkbox]:SSL :</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Good MDM Settings[checkbox]:Verify SSL Certificate :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMTP settings[entry]:Third party domain :</name>
+            <value>example.com</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMTP settings[entry]:From address :</name>
+            <value>nobody@example.com</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMTP settings[entry]:To address :</name>
+            <value>postmaster@[AUTO_REPLACED_IP]</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Nessus TCP scanner[radio]:Firewall detection :</name>
+            <value>Automatic (normal);Disabled (softer);Do not detect RST rate limitation (soft);Ignore closed ports (aggressive)</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:SSH user name :</name>
+            <value>root</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:SSH password (unsafe!) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Passphrase for SSH key :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[radio]:Elevate privileges with :</name>
+            <value>Nothing;sudo;su;su+sudo;Cisco &apos;enable&apos;</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Privilege elevation binary path (directory) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:su login :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Escalation account :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Escalation password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Preferred SSH port :</name>
+            <value>22</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Client version :</name>
+            <value>OpenSSH_5.0</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Additional SSH user name (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Additional SSH password (1) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Additional SSH user name (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Additional SSH password (2) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Additional SSH user name (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Additional SSH password (3) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Additional SSH user name (4) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Additional SSH password (4) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[entry]:Additional SSH user name (5) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Additional SSH password (5) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Number of pages to mirror :</name>
+            <value>2000</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Maximum depth :</name>
+            <value>8</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Start page :</name>
+            <value>/:/recipe/includes:/recipe/recipe_images:/manager:/manager/images:/xampp</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Excluded items regex :</name>
+            <value>/server_privileges\.php|logout</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Web mirroring[checkbox]:Follow dynamic pages :</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ICCP/COTP TSAP Addressing Weakness[entry]:Start COTP TSAP :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>ICCP/COTP TSAP Addressing Weakness[entry]:Stop COTP TSAP :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>PCI DSS compliance[checkbox]:Check for PCI-DSS compliance</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Wake-on-LAN[entry]:Time to wait (in minutes) for the systems to boot:</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Palo Alto Networks PAN-OS Settings[entry]:Palo Alto Username :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Palo Alto Networks PAN-OS Settings[password]:Palo Alto Password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Palo Alto Networks PAN-OS Settings[entry]:Palo Alto Port :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Palo Alto Networks PAN-OS Settings[checkbox]:Verify SSL Certificate :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>VMware SOAP API Settings[entry]:VMware user name :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>VMware SOAP API Settings[password]:VMware password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>VMware SOAP API Settings[checkbox]:Ignore SSL Certificate :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Modbus/TCP Coil Access[entry]:Start reg :</name>
+            <value>0</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Modbus/TCP Coil Access[entry]:End reg :</name>
+            <value>16</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager server :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager port :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager username :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[password]:Apple Profile Manager password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[checkbox]:SSL :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[checkbox]:Verify SSL Certificate :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[checkbox]:Force Device Updates :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Apple Profile Manager API Settings[entry]:Device Update Timeout (Minutes) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Patch Report[checkbox]:Display the superseded patches in the report</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Port scanners settings[checkbox]:Check open TCP ports found by local port enumerators</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Port scanners settings[checkbox]:Only run network port scanners if local port enumeration failed</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:SMB account :</name>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Start the registry service during the scan</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Enable administrative shares during the scan</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[password]:SMB password :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>Login configurations[entry]:SMB domain (optional) :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH public key to use :</name>
+            <value></value>
+          </preference>
+          <preference regex="^External$">
+            <category>plugin</category>
+            <name>SSH settings[password]:Passphrase for SSH key :</name>
+            <value></value>
+          </preference>
+
+          <preference regex="^Internal$">
+            <category>server</category>
+            <name>port_range</name>
+            <value>default</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>PCI DSS compliance[checkbox]:Check for PCI-DSS compliance</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Report paranoia</name>
+            <value>Normal</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>max_hosts</name>
+            <value>80</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>max_checks</name>
+            <value>5</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>checks_read_timeout</name>
+            <value>5</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>wizard.asv.scan unresponsive</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+            <value>enabled</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Start the registry service during the scan</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Enable administrative shares during the scan</name>
+            <value>yes</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Service Detection[radio]:Test SSL based services</name>
+            <value>Known SSL ports</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable CGI scanning</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web Application Tests Settings[checkbox]:Enable web applications tests</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Number of pages to mirror :</name>
+            <value>1000</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Maximum depth :</name>
+            <value>6</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Start page :</name>
+            <value>/</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web mirroring[entry]:Excluded items regex :</name>
+            <value>/server_privileges\.php|logout</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Web mirroring[checkbox]:Follow dynamic pages :</name>
+            <value>no</value>
+          </preference>
+          <preference regex="^Internal$">
+            <category>plugin</category>
+            <name>Oracle Settings[checkbox]:Test default accounts (slow)</name>
+            <value>no</value>
+          </preference>
+        </defaultPreferences>
+
+        <option name="Internal">
+          <desc>Provide credentials to detect missing patches and client-side vulnerabilities (optional):</desc>
+          <input label="Windows Username">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:SMB account :</name>
+            </preference>
+          </input>
+          <input label="Windows Password">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[password]:SMB password :</name>
+            </preference>
+          </input>
+          <input label="Windows Domain">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Login configurations[entry]:SMB domain (optional) :</name>
+            </preference>
+          </input>
+          <input label="SSH Username">
+            <placeholder>root</placeholder>
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[entry]:SSH user name :</name>
+            </preference>
+          </input>
+          <input label="SSH Password (unsafe!)">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[password]:SSH password (unsafe!) :</name>
+            </preference>
+          </input>
+          <input label="SSH Public key">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[file]:SSH public key to use :</name>
+            </preference>
+          </input>
+          <input label="SSH Private key">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[file]:SSH private key to use :</name>
+            </preference>
+          </input>
+          <input label="Passphrase for SSH private key">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>SSH settings[password]:Passphrase for SSH key :</name>
+            </preference>
+          </input>
+        </option>
+        <option name="External">
+          <desc>If necesssary, adjust the following settings to scan targets over low bandwidth links or targets that do not respond to ping:</desc>
+          <input label="Max simultaneous hosts" default="20">
+            <type>entry</type>
+            <regex>INT_REGEX</regex>
+            <preference>
+              <category>server</category>
+              <name>max_hosts</name>
+            </preference>
+          </input>
+          <input label="Max simultaneous checks per host" default="4">
+            <type>entry</type>
+            <regex>INT_REGEX</regex>
+            <preference>
+              <category>server</category>
+              <name>max_checks</name>
+            </preference>
+          </input>
+          <input label="Network read timeout (seconds)" default="15">
+            <type>entry</type>
+            <regex>INT_REGEX</regex>
+            <preference>
+              <category>server</category>
+              <name>checks_read_timeout</name>
+            </preference>
+          </input>
+          <input label="Scan unresponsive hosts" default="no">
+            <type>checkbox</type>
+            <preference>
+              <category>server</category>
+              <name>wizard.asv.scan unresponsive</name>
+            </preference>
+            <defaultPreferences>
+              <preference regex="^yes$">
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+                <value>disabled</value>
+              </preference>
+              <preference regex="^no$">
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+        </option>
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>

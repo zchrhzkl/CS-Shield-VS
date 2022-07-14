@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>mobile</name>
+  <wizard_uuid>8382be4c-2056-51fe-65a3-a376b7912a013d58cfc392e0fac5</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>no_target</name>
+            <value>true</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Mobile Devices</name>
+            <value>enabled</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+    <step number="1">
+      <desc>Configure one or more device managers:</desc>
+      <input label="Device managers" required="true" multiple_allowed="true" default="ActiveSync (Microsoft Exchange)">
+        <type>ui_radio</type>
+        <option name="ActiveSync (Microsoft Exchange)">
+          <desc>Nessus can use ActiveSync to gather information about all the mobile devices that used this protocol to fetch their email via Microsoft Exchange. If you have an Exchange deployment, please enter the following information regarding your Domain Controller below</desc>
+          <input label="Domain Controller" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>ADSI Settings[entry]:Domain Controller :</name>
+            </preference>
+          </input>
+          <input label="Domain" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>ADSI Settings[entry]:Domain :</name>
+            </preference>
+          </input>
+          <input label="Domain Admin" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>ADSI Settings[entry]:Domain Username :</name>
+            </preference>
+          </input>
+          <input label="Domain Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>ADSI Settings[password]:Domain Password :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="AirWatch" minVersion="5200">
+          <desc>Nessus can use AirWatch to gather information about all the mobile devices managed in your company. If you have a AirWatch deployment, please enter the information below</desc>
+          <input label="AirWatch Environment API URL" required="true">
+            <type>entry</type>
+            <placeholder>https://airwatch.example.net/airwatchservices/0/</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[entry]:AirWatch Environment API URL :</name>
+            </preference>
+          </input>
+          <input label="AirWatch port" required="true">
+            <type>entry</type>
+            <regex>PORT_REGEX</regex>
+            <placeholder>443</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[entry]:AirWatch port :</name>
+            </preference>
+          </input>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[entry]:AirWatch username :</name>
+            </preference>
+          </input>
+          <input label="Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[password]:AirWatch password :</name>
+            </preference>
+          </input>
+          <input label="AirWatch API Key" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[entry]:AirWatch API key :</name>
+            </preference>
+          </input>
+          <input label="Use SSL" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[checkbox]:SSL :</name>
+            </preference>
+          </input>
+          <input label="Verify SSL Certificate" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>AirWatch API Settings[checkbox]:Verify SSL certificate :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Apple Profile Manager">
+          <desc>Nessus can use Apple's Profile Manager to gather information about the iOS devices managed in your company. If you do have a Profile Manager deployment, please enter the information below</desc>
+          <input label="Apple Profile Manager server" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager server :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>Apple Profile Manager API Settings[checkbox]:Force Device Updates :</name>
+                <value>yes</value>
+              </preference>
+              <preference>
+                <category>plugin</category>
+                <name>Apple Profile Manager API Settings[entry]:Device Update Timeout (Minutes) :</name>
+                <value>5</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Apple Profile Manager port" required="true">
+            <type>entry</type>
+            <regex>PORT_REGEX</regex>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager port :</name>
+            </preference>
+          </input>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[entry]:Apple Profile Manager username :</name>
+            </preference>
+          </input>
+          <input label="Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[password]:Apple Profile Manager password :</name>
+            </preference>
+          </input>
+          <input label="Use SSL" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[checkbox]:SSL :</name>
+              <value>yes</value>
+            </preference>
+          </input>
+          <input label="Verify SSL Certificate" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>Apple Profile Manager API Settings[checkbox]:Verify SSL Certificate :</name>
+              <value>yes</value>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Good For Enterprise" minVersion="5200">
+          <desc>Nessus can use Good Mobile Device Management to gather information about the  mobile devices managed in your company. If you have Good MDM, please enter the   information below.</desc>
+          <input label="GMC Server" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Good MDM Settings[entry]:GMC Server :</name>
+            </preference>
+          </input>
+          <input label="Port" required="true">
+            <type>entry</type>
+            <regex>PORT_REGEX</regex>
+            <preference>
+              <category>plugin</category>
+              <name>Good MDM Settings[entry]:Port :</name>
+            </preference>
+          </input>
+          <input label="Domain" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Good MDM Settings[entry]:Domain :</name>
+            </preference>
+          </input>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>Good MDM Settings[entry]:Username :</name>
+            </preference>
+          </input>
+          <input label="Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>Good MDM Settings[password]:Password :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="MobileIron" minVersion="5200">
+          <desc>Nessus can use MobileIron to gather information about all the mobile devices managed on your network. If you have MobileIron, please enter the information below.</desc>
+          <input label="MobileIron VSP Admin Portal URL" required="true">
+            <type>entry</type>
+            <placeholder>www.example.net/mifs/login.jsp</placeholder>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[entry]:MobileIron VSP Admin Portal URL :</name>
+            </preference>
+          </input>
+          <input label="MobileIron Port" required="true">
+            <type>entry</type>
+            <regex>PORT_REGEX</regex>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[entry]:MobileIron port :</name>
+            </preference>
+          </input>
+          <input label="Username" required="true">
+            <type>entry</type>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[entry]:MobileIron username :</name>
+            </preference>
+          </input>
+          <input label="Password" required="true">
+            <type>password</type>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[password]:MobileIron password :</name>
+            </preference>
+          </input>
+          <input label="Use SSL" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[checkbox]:SSL :</name>
+              <value>yes</value>
+            </preference>
+          </input>
+          <input label="Verify SSL Certificate" required="true" default="yes">
+            <type>checkbox</type>
+            <preference>
+              <category>plugin</category>
+              <name>MobileIron API Settings[checkbox]:Verify SSL certificate :</name>
+              <value>yes</value>
+            </preference>
+          </input>
+        </option>
+
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>

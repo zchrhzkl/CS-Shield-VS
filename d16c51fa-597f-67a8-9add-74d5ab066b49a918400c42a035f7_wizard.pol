@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>malware</name>
+  <wizard_uuid>d16c51fa-597f-67a8-9add-74d5ab066b49a918400c42a035f7</wizard_uuid>
+  <wizard>
+
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.34220</name> <!-- Netstat Portscanner (WMI) -->
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Windows</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.59275</name> <!-- Malicious Process Detection -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.64687</name> <!-- Malicious Process Detection: APT1 Software Running -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.64788</name> <!-- Malicious Process Detection: Malware Signed By Stolen Bit9 Certificate -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.59641</name> <!-- Malicious Process Detection: Potentially Unwanted Software -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70614</name> <!-- windows_autoruns_appInit_dll.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70615</name> <!-- windows_autoruns_boot_execute.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70616</name> <!-- windows_autoruns_codecs.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70617</name> <!-- windows_autoruns_explorer.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70618</name> <!-- windows_autoruns_image_HiJacks.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70619</name> <!-- windows_autoruns_internet_explorer.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70620</name> <!-- windows_autoruns_knownDLLs.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70621</name> <!-- windows_autoruns_logon.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70613</name> <!-- windows_autoruns_LSA_Providers.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70622</name> <!-- windows_autoruns_network_providers.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70623</name> <!-- windows_autoruns_print_monitors.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70624</name> <!-- windows_autoruns_report.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70625</name> <!-- windows_autoruns_schtasks.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70626</name> <!-- windows_autoruns_services.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70627</name> <!-- windows_autoruns_setup.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70628</name> <!-- windows_autoruns_unique_entries.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70629</name> <!-- windows_autoruns_winlogon.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70630</name> <!-- windows_autoruns_winsock_providers.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70329</name> <!-- windows_process_information.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70330</name> <!-- windows_process_information_unique_name.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70331</name> <!-- windows_process_module_information.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70767</name> <!-- wmi_known_good_running.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70768</name> <!-- wmi_unknown_running.nbin -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.70943</name> <!-- never_seen_process_before.nbin -->
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.General</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.58430</name> <!-- ipthreat_lookup_netstat.nbin -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.52669</name> <!-- ipthreat_lookup.nbin -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.59713</name> <!-- ipthreat_lookup_netstat_inbound.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.58429</name> <!-- ipthreat_lookup_dns.nbin -->
+            <value>enabled</value>
+          </preference>
+
+ 	  <preference>
+		<category>plugin</category>
+		<name>Ping the remote host[checkbox]:Test the local Nessus host</name>
+		<value>yes</value>
+	  </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Settings</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.21745</name> <!-- hostlevel_check_failed.nasl -->
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name>Login configurations[checkbox]:Never send SMB credentials in clear text</name>
+            <value>yes</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+
+    <step number="1">
+      <desc>Provide credentials for a Windows account with local administrator privileges:</desc>
+      <input label="Username" required="true">
+        <type>entry</type>
+        <preference>
+          <category>plugin</category>
+          <name>Login configurations[entry]:SMB account :</name>
+        </preference>
+      </input>
+      <input label="Password" required="true">
+        <type>password</type>
+        <preference>
+          <category>plugin</category>
+          <name>Login configurations[password]:SMB password :</name>
+        </preference>
+      </input>
+      <input label="Domain">
+        <type>entry</type>
+        <preference>
+          <category>plugin</category>
+          <name>Login configurations[entry]:SMB domain (optional) :</name>
+        </preference>
+      </input>
+      <input label="Start the Remote Registry service during the scan" default="no">
+        <type>checkbox</type>
+        <preference>
+          <category>plugin</category>
+          <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Start the registry service during the scan</name>
+        </preference>
+      </input>
+      <input label="Enable administrative shares during the scan" default="no">
+        <type>checkbox</type>
+        <preference>
+          <category>plugin</category>
+          <name>SMB Registry : Start the Registry Service during the scan[checkbox]:Enable administrative shares during the scan</name>
+        </preference>
+      </input>
+    </step>
+
+    <step number="2">
+      <desc>Upload custom lists containing MD5 hashes of known good/bad processes to detect (optional). These should be comma delimited files.  The first field is the MD5 hash.  The second field (optional) is a description of the process.</desc>
+      <input label="Known bad MD5 hashes">
+	<type>file</type>
+	<preference>
+           <category>plugin</category>
+           <name>Malicious Process Detection[file]:Additional MD5 hashes (optional) :</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.65548</name> <!-- Malicious Process Detection: User Defined Malware Running -->
+            <value>enabled</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Known good MD5 hashes">
+	<type>file</type>
+	<preference>
+           <category>plugin</category>
+           <name>Malicious Process Detection[file]:Known good MD5 hashes (optional) :</name>  <!-- findings reported by 70767 which is already enabled above -->
+        </preference>
+      </input>
+    </step>
+
+  </wizard>
+</policyTemplate>

@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>shellshock</name>
+  <wizard_uuid>65d5b7ce-8d3b-d0df-f473-40633bb6122108a510a44374a167</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>max_hosts</name>
+            <value>120</value>
+          </preference>
+          <preference>
+            <category>server</category>
+            <name>max_checks</name>
+            <value>5</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.11219</name> <!-- Nessus SYN scanner -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.14272</name> <!-- netstat portscanner (SSH) -->
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Gain a shell remotely</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.CGI abuses</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.CentOS Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Debian Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.FreeBSD Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Mandriva Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.SuSE Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Oracle Linux Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Red Hat Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Slackware Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Ubuntu Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Scientific Linux Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Fedora Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Gentoo Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Solaris Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.SMTP problems</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.MacOS X Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.FTP</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.VMware ESX Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.General</name>
+            <value>mixed</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77823</name> <!-- Bash Remote Code Execution (local check, requires creds)-->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77829</name> <!-- GNU Bash Environment Variable Handling Code Injection (remote web check) -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77825</name> <!-- debian_DSA-3032.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77828</name> <!-- redhat-RHSA-2014-1293.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77835</name> <!-- centos_RHSA-2014-1293.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77836</name> <!-- freebsd_pkg_71ad81da441411e4a33e3c970e169bc2.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77843</name> <!-- mandriva_MDVSA-2014-186.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77846</name> <!-- openSUSE-2014-559.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77848</name> <!-- oraclelinux_ELSA-2014-1293.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77832</name> <!-- Slackware_SSA_2014-267-01.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77850</name> <!-- suse_11_bash-140919.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77854</name> <!-- ubuntu_USN-2362-1.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77857</name> <!-- bash_remote_code_execution_telnet.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77865</name> <!-- sl_20140924_bash_on_SL5_x.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77879</name> <!-- centos_RHSA-2014-1306.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77882</name> <!-- debian_DSA-3035.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77874</name> <!-- fedora_2014-11360.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77876</name> <!-- fedora_2014-11503.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77886</name> <!-- gentoo_GLSA-201409-10.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77891</name> <!-- oraclelinux_ELSA-2014-3075.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77892</name> <!-- oraclelinux_ELSA-2014-3076.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77893</name> <!-- oraclelinux_ELSA-2014-3077.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77894</name> <!-- oraclelinux_ELSA-2014-3078.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77895</name> <!-- redhat-RHSA-2014-1306.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77877</name> <!-- Slackware_SSA_2014-268-01.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77878</name> <!-- Slackware_SSA_2014-268-02.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77897</name> <!-- ubuntu_USN-2363-1.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77898</name> <!-- ubuntu_USN-2363-2.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77911</name> <!-- solaris9_149079-01.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77912</name> <!-- solaris9_x86_149080-01.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77913</name> <!-- solaris10_126546-06.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77914</name> <!-- solaris10_x86_126547-06.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77935</name> <!-- fedora_2014-11295.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77939</name> <!-- fedora_2014-11514.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77941</name> <!-- fedora_2014-11527.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77945</name> <!-- fedora_2014-11718.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77950</name> <!-- mandriva_MDVSA-2014-190.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77849</name> <!-- oraclelinux_ELSA-2014-1294.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77951</name> <!-- oraclelinux_ELSA-2014-1306.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77953</name> <!-- oraclelinux_ELSA-2014-3079.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77956</name> <!-- sl_20140926_bash_on_SL5_x.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77958</name> <!-- suse_11_bash-140926.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77969</name> <!-- shellshock_postfix_filters.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77970</name> <!-- shellshock_qmail.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77971</name> <!-- macosx_shellshock_update.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77966</name> <!-- openSUSE-2014-563.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77967</name> <!-- openSUSE-2014-564.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.77986</name> <!-- proftpd_bash_injection.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78025</name> <!-- vmware_VMSA-2014-0010.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78067</name> <!-- bash_remote_code_execution2.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78385</name> <!-- bash_cve_2014_7169.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78395</name> <!-- solaris11_bash_2014_10_07.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78701</name> <!-- shellshock_mail_agents.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78822</name> <!-- shellshock_sip_invite.nasl -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.62115</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.62305</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78039</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78058</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78059</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78112</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78113</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78115</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78197</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78237</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78238</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78239</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78361</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78362</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78508</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78550</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78551</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78587</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78590</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78591</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78596</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78693</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78770</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78771</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78826</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78827</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78828</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78857</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.78889</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79051</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79052</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79053</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79123</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79124</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79147</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79215</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79234</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79584</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.79804</name>
+            <value>enabled</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Report verbosity</name> <!-- ensure the remote plugin displays both the request and response -->
+            <value>Verbose</value>
+          </preference>
+
+          <!-- required for webmirror -->
+          <preference>
+            <category>plugin</category>
+            <name>Global variable settings[checkbox]:Enable CGI scanning</name>
+            <value>yes</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Fast network discovery</name>
+            <value>yes</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>Do not scan fragile devices[checkbox]:Scan Network Printers</name>
+            <value>yes</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>Do not scan fragile devices[checkbox]:Scan Novell Netware hosts</name>
+            <value>yes</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+    <step number="1">
+     <desc>This policy is used to perform a remote check for the Shellshock vulnerability (CVE-2014-6271) on all open ports where a web server is detected. "Quick" only scans ports 80 and 443. "Normal" uses the default Nessus port scan range, and only attempts to detect SSL on ports where HTTPS is commonly used. "Thorough" scans all 65,535 ports and attempts to detect web servers and SSL on all open ports. Additionally, Nessus will attempt to crawl each web server to enumerate URLs that can be tested for the vulnerability. Multiple start paths can be provided, separated by colons (e.g., /:/blog:/store)</desc>
+      <input label="Scan type" default="Normal">
+	<type>radio</type>
+	<option>Quick</option>
+	<option>Normal</option>
+	<option>Thorough</option>
+	<preference>
+           <category>ui_placeholder</category>
+           <name>wizard.bash_web_rce.scan</name>
+        </preference>
+	<defaultPreferences>
+	<preference regex="Quick">
+           <category>server</category>
+           <name>port_range</name>
+           <value>80,443</value>
+        </preference>
+        <preference regex="Quick">
+          <category>plugin</category>
+          <name>Service Detection[radio]:Test SSL based services</name>
+          <value>Known SSL ports</value>
+        </preference>
+        <preference regex="Quick">
+          <category>plugin</category>
+          <name>Global variable settings[checkbox]:Thorough tests (slow)</name>
+          <value>no</value>
+        </preference>
+
+	<preference regex="Normal">
+           <category>server</category>
+           <name>port_range</name>
+           <value>default</value>
+        </preference>
+        <preference regex="Normal">
+          <category>plugin</category>
+          <name>Service Detection[radio]:Test SSL based services</name>
+          <value>Known SSL ports</value>
+        </preference>
+        <preference regex="Normal">
+          <category>plugin</category>
+          <name>Global variable settings[checkbox]:Thorough tests (slow)</name>
+          <value>no</value>
+        </preference>
+
+	<preference regex="Thorough">
+           <category>server</category>
+           <name>port_range</name>
+           <value>1-65535</value>
+        </preference>
+        <preference regex="Thorough">
+          <category>plugin</category>
+          <name>Service Detection[radio]:Test SSL based services</name>
+          <value>All</value>
+        </preference>
+        <preference regex="Thorough">
+          <category>plugin</category>
+          <name>Global variable settings[checkbox]:Thorough tests (slow)</name>
+          <value>yes</value>
+        </preference>
+	</defaultPreferences>
+     </input>
+     <input label="Web crawler start page" default="/">
+       <type>entry</type>
+       <preference>
+         <category>plugin</category>
+         <name>Web mirroring[entry]:Start page :</name>
+       </preference>
+     </input>
+     </step>
+
+     <step number="2">
+       <desc>Providing SSH credentials allows Nessus to log into targets, enumerate missing Bash updates for CVE-2014-6271 and CVE-2014-7169, and run a proof-of-concept shell command to determine if Bash is vulnerable to CVE-2014-6271. This step is recommended, but optional.</desc>
+       <input label="Username">
+         <placeholder>root</placeholder>
+         <type>entry</type>
+         <preference>
+           <category>plugin</category>
+           <name>SSH settings[entry]:SSH user name :</name>
+         </preference>
+         <defaultPreferences>
+           <preference>
+             <category>individual_plugin</category>
+             <name>plugin_selection.individual_plugin.21745</name> <!-- hostlevel_check_failed.nasl -->
+             <value>enabled</value>
+           </preference>
+         </defaultPreferences>
+        </input>
+        <input label="Password (unsafe!)">
+          <type>password</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[password]:SSH password (unsafe!) :</name>
+          </preference>
+        </input>
+        <input label="Public key">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH public key to use :</name>
+          </preference>
+        </input>
+        <input label="Private key">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH private key to use :</name>
+          </preference>
+        </input>
+        <input label="Passphrase for private key">
+          <type>password</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[password]:Passphrase for SSH key :</name>
+          </preference>
+        </input>
+        <input label="Known hosts file">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH known_hosts file :</name>
+          </preference>
+        </input>
+     </step>
+  </wizard>
+</policyTemplate>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>ghost</name>
+  <wizard_uuid>f10bc363-deb5-7218-b4ae-e08c85f84aa089ba9aa631170429</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>This policy is used to perform local checks for the GNU C Library (glibc) GHOST vulnerability (CVE-2015-0235). Define your policy name, description, and post-scan editing preferences below:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>max_hosts</name>
+            <value>120</value>
+          </preference>
+          <preference>
+            <category>server</category>
+            <name>max_checks</name>
+            <value>5</value>
+          </preference>
+
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Port scanners</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.General</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.10180</name> <!-- Ping the remote host -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.11219</name> <!-- Nessus SYN scanner -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.14272</name> <!-- netstat portscanner (SSH) -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>individual_plugin</category>
+            <name>plugin_selection.individual_plugin.21745</name> <!-- Authentication Failure - Local Checks Not Run -->
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Amazon Linux Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.CentOS Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Debian Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.SuSE Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Oracle Linux Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Red Hat Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Ubuntu Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Scientific Linux Local Security Checks</name>
+            <value>mixed</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.General</name>
+            <value>mixed</value>
+          </preference>
+
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81024</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81025</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81026</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81029</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81044</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81031</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81033</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81034</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81037</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81038</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81039</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>plugin_selection.individual_plugin.81042</name>
+            <value>enabled</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>Global variable settings[radio]:Report verbosity</name> <!-- ensure the remote plugin displays both the request and response -->
+            <value>Verbose</value>
+          </preference>
+          <preference>
+            <category>plugin</category>
+            <name>Ping the remote host[checkbox]:Fast network discovery</name>
+            <value>yes</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+     <step number="1">
+       <desc>Providing SSH credentials allows Nessus to log into targets to run a command to determine if glibc is vulnerable to CVE-2015-0235. This step is recommended, but optional.</desc>
+       <input label="Username">
+         <placeholder>root</placeholder>
+         <type>entry</type>
+         <preference>
+           <category>plugin</category>
+           <name>SSH settings[entry]:SSH user name :</name>
+         </preference>
+         <defaultPreferences>
+           <preference>
+             <category>individual_plugin</category>
+             <name>plugin_selection.individual_plugin.21745</name> <!-- hostlevel_check_failed.nasl -->
+             <value>enabled</value>
+           </preference>
+         </defaultPreferences>
+        </input>
+        <input label="Password (unsafe!)">
+          <type>password</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[password]:SSH password (unsafe!) :</name>
+          </preference>
+        </input>
+        <input label="Public key">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH public key to use :</name>
+          </preference>
+        </input>
+        <input label="Private key">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH private key to use :</name>
+          </preference>
+        </input>
+        <input label="Passphrase for private key">
+          <type>password</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[password]:Passphrase for SSH key :</name>
+          </preference>
+        </input>
+        <input label="Known hosts file">
+          <type>file</type>
+          <preference>
+            <category>plugin</category>
+            <name>SSH settings[file]:SSH known_hosts file :</name>
+          </preference>
+        </input>
+     </step>
+  </wizard>
+</policyTemplate>

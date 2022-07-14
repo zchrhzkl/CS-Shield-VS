@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policyTemplate>
+  <name>offline_audit</name>
+  <wizard_uuid>1384f3ce-0376-7801-22db-a91e1ae16dea8d863e17313802b1</wizard_uuid>
+  <wizard>
+    <step number="0">
+      <desc>Define your policy name, description, and post-scan editing preferences:</desc>
+      <input label="Policy Name" required="true">
+        <type>entry</type>
+        <preference>
+          <category>policy</category>
+          <name>name</name>
+        </preference>
+        <defaultPreferences>
+          <preference>
+            <category>server</category>
+            <name>no_target</name>
+            <value>true</value>
+          </preference>
+          <preference>
+            <category>family</category>
+            <name>plugin_selection.family.Policy Compliance</name>
+            <value>mixed</value>
+          </preference>
+        </defaultPreferences>
+      </input>
+      <input label="Visibility" admin_only="true" required="true" default="private">
+        <type>radio</type>
+        <option>private</option>
+        <option>shared</option>
+        <preference>
+          <category>policy</category>
+          <name>visibility</name>
+        </preference>
+      </input>
+      <input label="Description">
+        <type>entry</type>
+        <placeholder>A brief description of the policy goes here</placeholder>
+        <preference>
+          <category>policy</category>
+          <name>policy_comments</name>
+        </preference>
+      </input>
+      <input label="Allow Post-Scan Report Editing" required="true" default="yes">
+        <type>checkbox</type>
+        <preference>
+          <category>server</category>
+          <name>allow_post_scan_editing</name>
+        </preference>
+      </input>
+    </step>
+    <step number="1">
+      <desc>Select one or more configuration types to audit:</desc>
+      <input label="Config Types to Audit" required="true" multiple_allowed="true" default="Cisco">
+        <type>ui_radio</type>
+        <option name="Adtran AOS" minVersion="5200">
+          <desc>Upload an Adtran AOS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"show configuration"
+"show running-config"
+"show startup-config"</desc>
+          <input label="Adtran AOS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Adtran AOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.71991</name> <!-- adtran_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Adtran AOS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Adtran AOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Brocade" minVersion="5200">
+          <desc>Upload a Brocade Fabric OS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from the following command:
+
+"configshow -all"</desc>
+          <input label="Fabric OS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Brocade FabricOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.71842</name> <!-- brocade_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Fabric OS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Brocade FabricOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Cisco">
+          <desc>Upload a Cisco (IOS, NX-OS, FWSM) configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"show running-config"
+"show startup-config"
+"show config" (IOS and FWSM only)</desc>
+          <input label="Cisco Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Cisco IOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.46689</name> <!-- cisco_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Cisco .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Cisco IOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Dell Force10 FTOS" minVersion="5200">
+          <desc>Upload a Dell FTOS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"show running-config"
+"show startup-config"</desc>
+          <input label="Dell FTOS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Dell Force10 FTOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.72461</name> <!-- dell_force10_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Dell FTOS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Dell Force10 FTOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="ExtremeXOS" minVersion="5200">
+          <desc>Upload an ExtremeXOS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from the following command:
+
+"show configuration detail"</desc>
+          <input label="ExtremeXOS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Extreme ExtremeXOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.73156</name> <!-- extreme_extremexos_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="ExtremeXOS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Extreme ExtremeXOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="FireEye">
+          <desc>Upload a FireEye configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"show running-config"
+"show configuration full"</desc>
+          <input label="FireEye Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>FireEye Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.70469</name> <!-- fireeye_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="FireEye .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>FireEye Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Fortigate" minVersion="5200">
+          <desc>Upload a Fortigate FortiOS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from the following command:
+
+"show full-configuration"</desc>
+          <input label="FortiOS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Fortigate FortiOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.70272</name> <!-- fortigate_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="FortiOS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Fortigate FortiOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="HP ProCurve">
+          <desc>Upload an HP ProCurve configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"show config"
+"show default-config"
+"show running-config"</desc>
+          <input label="HP ProCurve Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>HP ProCurve Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.70271</name> <!-- hp_procurve_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="HP ProCurve .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>HP ProCurve Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Huawei VRP" minVersion="5200">
+          <desc>Upload an Huawei VRP configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from one of the following commands:
+
+"display current-configuration"</desc>
+          <input label="Huawei VRP Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Huawei VRP Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.73157</name> <!-- huawei_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Huawei VRP .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Huawei VRP Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="Juniper Junos">
+          <desc>Upload a Juniper Junos configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file. Each configuration file should contain output from the following command:
+
+"show configuration | display set"</desc>
+          <input label="Junos Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Juniper Junos Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.62680</name> <!-- juniper_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="Junos .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>Juniper Junos Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="NetApp Data ONTAP">
+          <desc>Upload a NetApp Data ONTAP configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file.  Each configuration file should contain output from the following command:
+
+"options"</desc>
+          <input label="NetApp Data ONTAP Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>NetApp Data ONTAP Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.66934</name> <!-- netapp_dataontap_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="NetApp Data ONTAP .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>NetApp Data ONTAP Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+
+        <option name="SonicWALL SonicOS" minVersion="5200">
+          <desc>Upload a SonicOS configuration file to audit. A single configuration file should be uploaded as a .txt file.  Multiple configuration files should be uploaded in a .zip file.  Each configuration file should contain output from the following command:
+
+"show all"</desc>
+          <input label="SonicOS Config file(s)" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SonicWALL SonicOS Compliance Checks[file]:Offline config file (.txt or .zip) :</name>
+            </preference>
+            <defaultPreferences>
+              <preference>
+                <category>plugin</category>
+                <name>plugin_selection.individual_plugin.71955</name> <!-- sonicwall_compliance_check.nbin -->
+                <value>enabled</value>
+              </preference>
+            </defaultPreferences>
+          </input>
+          <input label="SonicOS .audit File" required="true">
+            <type>file</type>
+            <preference>
+              <category>plugin</category>
+              <name>SonicWALL SonicOS Compliance Checks[file]:Policy file #1 :</name>
+            </preference>
+          </input>
+        </option>
+      </input>
+    </step>
+  </wizard>
+</policyTemplate>
